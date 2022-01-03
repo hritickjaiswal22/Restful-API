@@ -1,16 +1,16 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const url = "mongodb://127.0.0.1:27017/testAPI";
+require("dotenv/config");
 
 const app = express();
 
 (async () => {
   try {
-    await mongoose.connect(url, {
+    await mongoose.connect(process.env.DB_CONNECTION, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log(`MongoDB Connected: ${url}`);
+    console.log(`MongoDB Connected`);
   } catch (err) {
     console.error(err);
   }
