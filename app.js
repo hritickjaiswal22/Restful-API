@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv/config");
-const postRoute = require("./routes/posts");
+const postsRoute = require("./routes/posts");
 
 const app = express();
 
@@ -18,14 +18,10 @@ const app = express();
 })();
 
 //* For modular code we can use router with middlewares
-app.use("/posts", postRoute);
+app.use("/posts", postsRoute);
 
 app.get("/", (req, res) => {
   res.send("In home");
-});
-
-app.get("/posts", (req, res) => {
-  res.send("GET posts");
 });
 
 //Listening
