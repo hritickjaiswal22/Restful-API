@@ -5,4 +5,8 @@ router.get("/", (req, res) => {
   res.send("GET posts");
 });
 
+router.post("/", (req, res) => {
+  console.log(req.body);
+});
+
 module.exports = router;
