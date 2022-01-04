@@ -25,4 +25,24 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.get("/:postId", async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.postId);
+
+    res.json(post);
+  } catch (error) {
+    res.json({ message: error });
+  }
+});
+
+router.delete("/:postId", async (req, res) => {
+  try {
+    const post = await Post.remove({ _id: req.params.postId });
+
+    res.json(post);
+  } catch (error) {
+    res.json({ message: error });
+  }
+});
+
 module.exports = router;
