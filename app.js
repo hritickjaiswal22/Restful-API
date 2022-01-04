@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv/config");
 const postsRoute = require("./routes/posts");
+const bodyParser = require("body-parser");
 
 const app = express();
 
@@ -16,6 +17,9 @@ const app = express();
     console.error(err);
   }
 })();
+
+//* Using body-parser for being able to read json data in the express server
+app.use(bodyParser.json());
 
 //* For modular code we can use router with middlewares
 app.use("/posts", postsRoute);
